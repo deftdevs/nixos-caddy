@@ -1,3 +1,8 @@
+// The below line is required to enable post-quantum key agreement in Go 1.23
+// by default without insisting on setting a minimum version of 1.23 in go.mod.
+// See https://github.com/caddyserver/caddy/issues/6540#issuecomment-2313094905
+//go:debug tlskyber=1
+
 // Copyright 2015 Matthew Holt and The Caddy Authors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -6,8 +11,6 @@
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
@@ -33,8 +36,6 @@ import (
 
 	// plug in Caddy modules here
 	_ "github.com/caddyserver/caddy/v2/modules/standard"
-	// // add the caddy Hetzner DNS plugin
-	_ "github.com/caddy-dns/hetzner"
 )
 
 func main() {

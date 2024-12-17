@@ -31,15 +31,31 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
+          defaultPackage = self.packages.${system}.caddy;
+
           packages.caddy = pkgs.buildGoModule {
             pname = "caddy";
             inherit version;
-            src = ./caddy-src;
+            src = ./src/caddy;
             runVend = true;
-            vendorHash = "sha256-XYfO/fAZzBJQPP4qa9vOMonQMVNb4ZeHxiyjKhpKvRE=";
+            vendorHash = "sha256-B7bXvCLp3cIx+dNI0GQqY5QgP6uKisYdDp/G7zPrhuw=";
           };
 
-          defaultPackage = self.packages.${system}.caddy;
+          packages.caddy-dns-cloudflare = pkgs.buildGoModule {
+            pname = "caddy";
+            inherit version;
+            src = ./src/caddy-dns-cloudflare;
+            runVend = true;
+            vendorHash = "sha256-dEuxEG6mW2V7iuSXvziR82bmF+Hwe6ePCfdNj5t3t4c=";
+          };
+
+          packages.caddy-dns-hetzner = pkgs.buildGoModule {
+            pname = "caddy";
+            inherit version;
+            src = ./src/caddy-dns-hetzner;
+            runVend = true;
+            vendorHash = "sha256-GKMB7/jSKY9CHRGEd45xAdu4nX1aFOBoGZh7mfPOUOk=";
+          };
 
           devShells.default = import ./shell.nix { inherit pkgs; };
         }
