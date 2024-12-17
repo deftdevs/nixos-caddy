@@ -4,7 +4,7 @@
   # The NixOS version must contain the required Go version as described in:
   # https://github.com/caddyserver/caddy?tab=readme-ov-file#build-from-source
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
     systems.url = github:nix-systems/default;
 
