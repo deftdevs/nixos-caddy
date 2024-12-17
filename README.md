@@ -16,14 +16,17 @@ plugin baked in.
 
 To modify/add plugins:
 
-1. Edit `caddy-src/main.go` as per the upstream docs
-2. Run `go mod tidy`
-3. If necessary, update the hash in `flake.nix`
-4. Run `nix build`
+1. Update flake with `nix flake update`
+2. Enter dev shell with `nix develop`
+3. Edit `caddy-src/main.go` as per the upstream docs
+4. If necessary, update the packages with `go get -u`
+5. Run `go mod tidy`
+6. If necessary, update the hash in `flake.nix`
+7. Run `nix build`
 
 You should get a result with the compiled caddy. To verify that the plugins
 where correctly added use:
 
 ```
-./result/bin/caddy list-modules  
+./result/bin/caddy list-modules
 ```
